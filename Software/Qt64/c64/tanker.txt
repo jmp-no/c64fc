@@ -1,0 +1,36 @@
+
+copier'n:
+
+1. Les av dest-addresse på $8000/$8001
+2. source-addr = $8002
+3. Les byte fra source-addr
+4. Disable cart
+5. write til dest-addr
+6. enable cart
+7. source-addr++; dest-addr++
+8. 
+
+----
+ELLER:
+
+CART-minnet:
+$8000: Current packet #
+$8001: Antall packets
+$8002-$8003: Packet address
+$8004-$8005: Packet length (max 8000 bytes)
+$8006-> Data
+
+Eksempel:
+
+$8000: 00 05 01 08 03 58 cc f8 a8 03 ...
+
+       ^  ^  ^  ^  ^  ^  ^^^^^^^^^^^ ... data
+       |  |  |  |  |  |
+       |  |  |  |  |  +-- Length hi
+       |  |  |  |  +----- Length lo
+       |  |  |  +-------- Addres hi
+       |  |  +----------- Address lo
+       |  +-------------- Total packet conut
+       +----------------- Current packet #
+
+
