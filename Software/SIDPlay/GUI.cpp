@@ -95,16 +95,19 @@ void GUI::on_treeView_doubleClicked(const QModelIndex &index ) {
 
 
 void GUI::on_actionRelaunch_player_activated() {
-	OpenDevice();
-	QFile file( "c64/copyplayer.crt" );
-	if( ! file.open( QIODevice::ReadOnly )) {
-		printf( "blah blah file not found\n" );
-		return;
+	if( OpenDevice() == false ) {
+		QFile file( "c64/copyplayer.crt" );
+		if( ! file.open( QIODevice::ReadOnly )) {
+			printf( "blah blah file not found\n" );
+			return;
+		}
+		QByteArray blob = file.readAll();
+		Set8KMode();
+		WriteData( 0, (unsigned char *) blob.data(), blob.length() );
+		Reset();
+		CloseDevice();
+	} else {
+		printf( "device not found\n" );
 	}
-	QByteArray blob = file.readAll();
-	Set8KMode();
-	WriteData( 0, (unsigned char *) blob.data(), blob.length() );
-	Reset();
-	CloseDevice();
 }
 
