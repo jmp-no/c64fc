@@ -1,0 +1,7 @@
+DEPS:
+	* Qt4-dev
+	* libusb-dev
+
+
+issues:? 
+	* libusb linking error? -lusb need to be at the end of linker
