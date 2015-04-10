@@ -1,7 +1,17 @@
-all:
-	gcc -Wall -O2 -c hiddata.c
-	gcc -Wall -O2 -c main.c
-	ar -r libc64fc.a main.o hiddata.o
+CC=gcc
+CFLAGS=-Wall -O2
+OBJS=hiddata.o main.o
+TARGET=libc64fc.a
+AR=ar -r
+DELETE=rm -f
+
+.c.o:	$(CC) -c $*.c
+
+$(TARGET):	$(OBJS)
+	$(AR) $(TARGET) $(OBJS)
+
+all:	$(TARGET)
 
 clean:	
-	rm -f *.o libc64fc.a
+	$(DELETE) $(OBJS) $(TARGET)
+
