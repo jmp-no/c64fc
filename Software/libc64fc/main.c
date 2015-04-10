@@ -18,7 +18,13 @@ int OpenDevice() {
 	char productName[] = { USB_CFG_DEVICE_NAME, 0 };
 	int vid = vendor_id[0] + 256*vendor_id[1];
 	int pid = product_id[0] + 256*product_id[1];
-	return( usbhidOpenDevice( &dev, vid, vendorName, pid, productName, 0 ));
+	int status;
+	status = usbhidOpenDevice( &dev, vid, "jmp.no", pid, "C64FC-16", 0 );
+	if (status == 0) return status;
+	status = usbhidOpenDevice( &dev, vid, "jmp.no", pid, "C64FC-08", 0 );
+	if (status == 0) return status;
+	status = usbhidOpenDevice( &dev, vid, "jmp.no", pid, "C64FC", 0 );
+	return( status );
 }
 
 void CloseDevice() {
