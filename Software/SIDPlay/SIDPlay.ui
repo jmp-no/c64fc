@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SIDPlay</class>
+ <widget class="QMainWindow" name="SIDPlay">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>588</width>
+    <height>437</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SIDPlay</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTreeView" name="treeView"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>588</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuJukebox_mode">
+    <property name="title">
+     <string>Jukebox</string>
+    </property>
+    <widget class="QMenu" name="menuPlay_time">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Play time</string>
+     </property>
+     <addaction name="action1_minute"/>
+     <addaction name="action3_minutes"/>
+     <addaction name="action5_minutes"/>
+     <addaction name="actionIndefinitely"/>
+    </widget>
+    <addaction name="actionSingle_mode"/>
+    <addaction name="actionPlalyst_mode"/>
+    <addaction name="actionShuffle_mode"/>
+    <addaction name="menuPlay_time"/>
+   </widget>
+   <widget class="QMenu" name="menuC64">
+    <property name="title">
+     <string>C64</string>
+    </property>
+    <addaction name="actionReset"/>
+    <addaction name="actionRelaunch_player"/>
+   </widget>
+   <widget class="QMenu" name="menuControl">
+    <property name="title">
+     <string>Control</string>
+    </property>
+    <addaction name="actionPlay"/>
+    <addaction name="actionRewind"/>
+    <addaction name="actionFast_forward"/>
+    <addaction name="actionStop"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuControl"/>
+   <addaction name="menuJukebox_mode"/>
+   <addaction name="menuC64"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionSingle_mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Single mode</string>
+   </property>
+  </action>
+  <action name="actionPlalyst_mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Playlist mode</string>
+   </property>
+  </action>
+  <action name="actionShuffle_mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Shuffle mode</string>
+   </property>
+  </action>
+  <action name="actionReset">
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </action>
+  <action name="actionRelaunch_player">
+   <property name="text">
+    <string>Relaunch player</string>
+   </property>
+  </action>
+  <action name="action1_minute">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>1 minute</string>
+   </property>
+  </action>
+  <action name="action3_minutes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>3 minutes</string>
+   </property>
+  </action>
+  <action name="action5_minutes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>5 minutes</string>
+   </property>
+  </action>
+  <action name="actionIndefinitely">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Indefinitely</string>
+   </property>
+  </action>
+  <action name="actionPlay">
+   <property name="text">
+    <string>&amp;Play</string>
+   </property>
+  </action>
+  <action name="actionRewind">
+   <property name="text">
+    <string>&amp;Rewind</string>
+   </property>
+  </action>
+  <action name="actionFast_forward">
+   <property name="text">
+    <string>&amp;Fast forward</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>&amp;Stop</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>activated()</signal>
+   <receiver>SIDPlay</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>293</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout</sender>
+   <signal>activated()</signal>
+   <receiver>SIDPlay</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>293</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>treeView</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>SIDPlay</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>219</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>293</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRelaunch_player</sender>
+   <signal>activated()</signal>
+   <receiver>SIDPlay</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>293</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
