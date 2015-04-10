@@ -151,8 +151,8 @@ the newest features and options.
  * obdev's free shared VID/PID pair. See the file USBID-License.txt for
  * details.
  */
-#define USB_CFG_DEVICE_NAME     'C', '6', '4', 'F', 'C', '-', '1', '6'
-#define USB_CFG_DEVICE_NAME_LEN 8
+#define USB_CFG_DEVICE_NAME     'C', '6', '4', 'F', 'C'
+#define USB_CFG_DEVICE_NAME_LEN 5
 /* Same as above for the device name. If you don't want a device name, undefine
  * the macros. See the file USBID-License.txt before you assign a name.
  */
