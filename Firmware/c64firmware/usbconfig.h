@@ -152,14 +152,8 @@ the newest features and options.
  * details.
  */
 
-#if C64FC_EEPROM_SIZE == 8
-  #define USB_CFG_DEVICE_NAME     'C', '6', '4', 'F', 'C', '-', '0', '8'
-#elif C64FC_EEPROM_SIZE == 16
-  #define USB_CFG_DEVICE_NAME     'C', '6', '4', 'F', 'C', '-', '1', '6'
-#else
-  #warning "C64FC_EEPROM_SIZE is not defined in procject please define using -D parameter while compiling, reverting to 16k mode"
-  #define USB_CFG_DEVICE_NAME     'C', '6', '4', 'F', 'C', '-', '1', '6'
-#endif
+#define USB_CFG_DEVICE_NAME     'C', '6', '4', 'F', 'C', '-', '1', '6'
+
 
 #define USB_CFG_DEVICE_NAME_LEN 8
 /* Same as above for the device name. If you don't want a device name, undefine
