@@ -1,9 +1,9 @@
 all: 
 	make -C libc64fc
 	make -C cmd64
-	cd Qt64; qmake
+	cd Qt64 && qmake
 	make -C Qt64
-	cd SIDPlay; qmake
+	cd SIDPlay && qmake
 	make -C SIDPlay
 
 clean:
