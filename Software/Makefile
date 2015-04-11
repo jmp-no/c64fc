@@ -9,7 +9,7 @@ all:
 clean:
 	make -C libc64fc clean
 	make -C cmd64 clean
-	make -C Qt64 clean
+	-make -C Qt64 clean
 	rm -f Qt64/Makefile 
-	make -C SIDPlay clean
+	-make -C SIDPlay clean
 	rm -f SIDPlay/Makefile
