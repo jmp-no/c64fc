@@ -11,6 +11,7 @@ extern "C" {
         int WriteData( unsigned short, unsigned char *, int );
         int SetAddress( unsigned short );
         void Set8KMode();
+        void Set16KMode();
 
 };
 
@@ -38,6 +39,13 @@ void GUI::InitializeDirectory( QString path ) {
 
 void GUI::on_actionExit_activated() {
 	QCoreApplication::instance()->exit();
+}
+
+void GUI::on_actionReset_activated() {
+	if( ! OpenDevice() )
+		Reset();
+	else
+		printf( "open dev err\n" );
 }
 
 void GUI::on_actionAbout_activated() {
@@ -102,8 +110,8 @@ void GUI::on_actionRelaunch_player_activated() {
 			return;
 		}
 		QByteArray blob = file.readAll();
-		Set8KMode();
 		WriteData( 0, (unsigned char *) blob.data(), blob.length() );
+		Set8KMode();
 		Reset();
 		CloseDevice();
 	} else {

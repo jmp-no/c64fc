@@ -9,6 +9,7 @@ class GUI : public QMainWindow { Q_OBJECT
 		virtual ~GUI() {};
 	private slots:
 		void on_actionExit_activated();
+		void on_actionReset_activated();
 		void on_actionAbout_activated();
 		void on_actionRelaunch_player_activated();
 		void on_treeView_doubleClicked(const QModelIndex &);

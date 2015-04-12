@@ -8,7 +8,9 @@
 
 start:	sei
         stx $d016
+
         jsr $ff5b               ; init video
+
 	lda #0
 	sta $d020
 	sta $d021
