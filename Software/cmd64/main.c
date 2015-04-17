@@ -43,6 +43,7 @@ int main(int argc, char **argv) {
 		printf( "     hexdump                - Prints a hexdump of the entire cart\n");
 		printf( "     bootloader             - Enters bootloader mode on cart\n");
 		printf( "     ramsize                - Prints your EEPROM size\n");
+		printf( "     chardump <fps>         - Takes stdout from pipe and dump it on screen\n");
 		return( 1 );
 	}
 
