@@ -1,0 +1,4 @@
+# Ignore compiled AVR image
+# Only ignore in AVR image, couse wee are uploading .bin files for c64 asembler code.
+
+*.bin
