@@ -13,6 +13,8 @@
 
 #define C64FC_16K		0x16
 #define C64FC_8K		0x08
+#define C64FC_SETMODE   0x04
+
 #define C64FC_GETSIZE   0x20
 
 #define C64FC_RESET		0xf0
@@ -105,6 +107,14 @@ uchar   usbFunctionWrite(uchar *data, uchar len)
 		case 2:
 			address = ((unsigned char)data[0] << 8)|(unsigned char)data[1];
 			break;
+		case 3: 
+		    /* MODE CHANGE */
+			if      (data[0] == 0x00) C64_NOCART();
+			else if (data[0] == 0x01) C64_8K();
+			else if (data[0] == 0x02) C64_16K();
+			else if (data[0] == 0x03) C64_ULTIMAX();
+
+		    break;
 		default:
 			break;
 	}
@@ -151,6 +161,15 @@ usbMsgLen_t usbFunctionSetup(uchar data[8])
 					LED_OFF;
 					retval = 1;
 					bytesRemaining = 0;
+					break;
+				case C64FC_SETMODE:
+					/* Changes mode on the cart
+					 * Same function for all modes
+					 * uses parameter from PC, values: 
+					 * 0: diabled , 1: 8k,    2: 16k , 3: ultimax
+					 */
+					bytesRemaining = rq->wLength.bytes[0];
+					dataINFunction = 3;
 					break;
 				case C64FC_WRITEDATA:
 					/* 0xCC Send Data

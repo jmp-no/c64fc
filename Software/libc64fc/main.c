@@ -63,6 +63,19 @@ void Set16KMode() {
 	printf( "SetCartMode=%d, res=%d", 16, err );
 	Reset();
 }
+
+void SetMode(uint8_t mode) {
+	/* Sets the GAME / EXROM pins on the C64
+	 * Change is done without rebooting C64
+	 * Parameter is the enum C64_MODE
+	 */
+	int err = 0;
+	buffer[0] = C64FC_SETMODE;
+	buffer[1] = mode;
+	err = usbhidSetReport( dev, (char *) buffer, 1);
+	printf( "SetCartMode=%d, res=%d", mode, err );
+	Reset();
+}
 // Forslag til rewrite av WriteData...    
 int WriteData( unsigned short address, unsigned char *data, int size ) {
 	int err = 0;
