@@ -9,6 +9,7 @@
 #define C64FC_DATA		0xcc
 #define C64FC_READDATA  0xcd
 #define C64FC_SETADDR		0x64
+#define C64FC_APIVERSION 0xF1
 #define C64FC_SETMODE   0x04
 
 

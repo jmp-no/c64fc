@@ -23,8 +23,15 @@
 #define C64FC_SETADDR	0x64
 
 #define C64FC_BOOTLOADER 0xFE
+#define C64FC_APIVERSION 0xF1
 
 
+/* API Version
+ * This is used to check that the cart and pc software is "talking the same language"
+ * Increment this every time there is a change in the usb communication statck
+*/
+#define API_VERSION_HIGH 0x00;
+#define API_VERSION_LOW  0x01;
 
 #define LED_ON	PORTD |=  (1 << 7)
 #define LED_OFF PORTD &= ~(1 << 7)
@@ -271,6 +278,17 @@ usbMsgLen_t usbFunctionSetup(uchar data[8])
 					address  += rq->wLength.bytes[0];	// Address is incremented for next read...
 					retval    = rq->wLength.bytes[0];	// Retval on GET request is number of bytes returned
 					usbMsgPtr = largeReturnBuffer;
+					LED_OFF;
+					break;
+				case C64FC_APIVERSION: ;
+					/* 0xF1 API Version
+					 * This is used to check that the cart and pc software is "talking the same language"
+					 * API_VERSION_HIGH/LOW is incremented every time there is a change in the usb protocoll stack.
+					 */
+					smallReturnBuffer[0] = API_VERSION_HIGH;
+					smallReturnBuffer[1] = API_VERSION_LOW;
+					retval=2;				// Retval on GET request is number of bytes returned
+					usbMsgPtr = smallReturnBuffer;
 					LED_OFF;
 					break;
 			}

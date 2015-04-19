@@ -155,6 +155,20 @@ unsigned int GetRamSize() {
 
 }
 
+unsigned int GetApiVersion() {
+	char buffer[11];
+	int len = 2;
+	int err = 0;
+    if((err = usbhidGetReport(dev, C64FC_APIVERSION, (char *)buffer, &len)) != 0){
+        //fprintf(stderr, "error reading data: %s\n", usbErrorMessage(err));
+        printf("usb error of some kind");
+        return 0x0;
+    }
+    //printf("d: %x", buffer[1]);
+    return (uint16_t)(buffer[1] | (buffer[2] << 8));
+
+}
+
 
 void EnterBootloader() {
 	int err = 0;
